@@ -45,6 +45,9 @@
 }
 
 .home{
+  h1, h2{
+    color: white
+  }
   .banner{
     background: linear-gradient(to bottom,rgba(0, 168, 247, 0.26) 0,rgba(0, 168, 247, 0.26) 100%),url('./assets/bg-masthead.jpg');
     
@@ -58,7 +61,12 @@
 hr.divider{
       max-width: 3.25rem;
       border-width: .2rem;
-      border-color: #00adfd;
+}
+.bc-default{
+  border-color: #00adfd;
+}
+.bc-white{
+  border-color: #fff;
 }
 .text-1{
   color: rgba(255,255,255,.75);
@@ -87,4 +95,37 @@ hr.divider{
     color: #fff;
     background-color: #00adfd !important;
     border-color: #00adfd !important;
+}
+.btn-white{
+  background-color: #fff !important;
+  color: black !important;
+}
+.bg-default{
+  background-color: #00adfd;
+  border-color: #00adfd;
+}
+.bg-default:hover{
+  background-color: #00aaba;
+  border-color: #00aaba;
+}
+.mx-8{
+    padding: 8rem 0 !important;
+}
+.h2-default{
+  color: #00adfd !important;
+  font-weight: bold;
+}
+.button-article{
+  color: #0056b3;
+  background: transparent;
+    border: none;
+}
+
+.button-article:hover{
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.button-article:focus{
+      outline: 0px auto -webkit-focus-ring-color;
 }

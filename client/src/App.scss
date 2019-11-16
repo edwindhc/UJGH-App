@@ -2,134 +2,89 @@
   text-align: center;
   font-family: 'Merriweather Sans', sans-serif;
 }
-
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
-}
-
-.navbar-nav .nav-item {
-  display: flex;
-  align-items: center;
-  a {
-    color: white;
-    text-decoration: none
+.home{
+  .banner{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    h1{
+      font-size: 3.5rem;
+      font-weight: bold;
+      color: #fff;
+      padding-left: 15%;
+      padding-right: 15%;
+    }
   }
 }
-.navbar-toggler {
-  color: rgba(0, 0, 0, 0.5) !important;
-  border-color: rgba(0, 0, 0, 0.1) !important;
-  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.border-default{
-  border: 1px solid rgba(0,0,0,.125)
-}
-
-@media screen and (max-width: 991px){
-  .navbar-brand{
-  width: 50% !important
-}
+.navbar{
+  z-index: 999;
+  .nav-item{
+    display: flex;
+    align-items: center;
+  }
+  .textMenu1{
+    color: rgba(255,255,255,.7);
+    font-weight: bold;
+    text-decoration: none;
+    :hover{
+      color: white !important
+    }
+  }
+  .textMenu1:hover{
+      color: white !important
+    }
+  .textMenu2{
+    color: #212529;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  .textMenu2:hover{
+    color: #00adfd;
+  }
 }
 
 .home{
   .banner{
-    background: linear-gradient(to bottom,rgba(92,77,66,.8) 0,rgba(92,77,66,.8) 100%),url('./assets/bg-masthead.jpg');
+    background: linear-gradient(to bottom,rgba(0, 168, 247, 0.26) 0,rgba(0, 168, 247, 0.26) 100%),url('./assets/bg-masthead.jpg');
+    
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-size: cover;
   }
-  .nav-item{
-    a{
-      color: white !important
-    }
-  }
-  .panel-categories{
-    display: table;
-    overflow: auto !important;
-    button:disabled{
-      opacity: .5
-    }
-    .header{
-      i{
-        color: #3a94b9;
-        cursor: pointer
-      }
-    }
-    .button-default{
-      margin-top: 5px;
-      margin-bottom: 5px;
-      background-color: #3a94b9;
-      border: none;
-      color: white;
-      padding: 3px 15px;
-      border-radius: 5px;
-    }
-    h6{
-      text-align: center;
-    width: 100%;
-    background-color: #3a94b9;
-    color: white;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin-bottom: 0
-    }
-    .list-group{
-      width:100%;
-      .list-group-item{
-        padding: .40rem 1.25rem;
-      }
-    }
-  }
 }
 
-.color-default{
-  color: #3a94b9;
+hr.divider{
+      max-width: 3.25rem;
+      border-width: .2rem;
+      border-color: #00adfd;
 }
-.bg-default{
-  background-color: #3a94b9;
-  color: white;
+.text-1{
+  color: rgba(255,255,255,.75);
+  font-size: 1.15rem;
+  font-weight: 300!important;
 }
-.pointer{
-  cursor: pointer;
-}
-
-.button-icon{
-  display: flex;
-    background-color: #3a94b9;
-    border: none;
-    color: white;
-    padding: 7px 15px;
-    border-radius: 5px;
-    margin-left: 10px;
-    align-items: center;
-    i{
-      margin-right: 5px;
+.btn-x1{
+      padding: 1.25rem 2.25rem !important;
+    font-size: .85rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    border: none !important;
+    border-radius: 10rem !important;
+    :hover{
+          background-color: #00adfd !important;
+    border-color: #00adfd !important;
     }
 }
 
-.card-subtitle{
-  font-size: 13px!important;
-  line-height: 25px!important;
-  span{
-    font-weight: 600;
-  }
+.btn-x1:hover{
+  background-color: #00adfd !important;
+    border-color: #00adfd !important;
 }
 
+.btn-primary {
+    color: #fff;
+    background-color: #00adfd !important;
+    border-color: #00adfd !important;
+}

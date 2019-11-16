@@ -12,10 +12,17 @@ class Home extends Component {
     render() {
         return (
             <div className="home">
-                <div className="banner" style={{ height: 600 }}>
-                    test banner
+                <div className="banner" style={{ height: '100vh' }}>
+                    <div className="container">
+                        <h1>TRABAJO DE TITULACION ESPECIAL.</h1>
+                        <hr className="divider my-4" />
+                        <div class="col-lg-12 align-self-baseline">
+                            <p className="mb-5 text-1">Registra tu Proyecto y Facilita tus Asesorias.</p>
+                            <a className="btn btn-primary btn-x1" href="#about">Informacion.</a>
+                        </div>
+                    </div>
                 </div>
-                test
+
                 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

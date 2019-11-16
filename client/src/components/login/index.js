@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Form, FormGroup, Input } from 'reactstrap';
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { auth } from '../../services/auth';
 
 class Login extends Component {
@@ -14,10 +14,11 @@ class Login extends Component {
         }
     }
 
-    login() {
+    async login() {
         const { email, password } = this.state
         let user = { email, password }
-        auth.login(user)
+        const response = await auth.login(user)
+        if (response.status === 200) this.props.history.push('/dashboard')
     }
     handleChange(evt) {
         const { value, name } = evt.target
@@ -68,4 +69,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default withRouter(Login);

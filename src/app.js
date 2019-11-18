@@ -4,6 +4,7 @@ const routes = require('./routes/index');
 const error = require('./middlewares/error')
 const cors = require('cors');
 const path = require('path');
+const fileUpload = require('express-fileupload')
 
 const app = express();
 // app.get('*', (req, res) => res.sendFile(path.join(__dirname + '/client/build/index.html')))
@@ -13,7 +14,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 app.use(cors());
-
+app.use(fileUpload())
 //routes
 app.use(routes);
 

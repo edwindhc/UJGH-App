@@ -6,6 +6,7 @@ import Login from './components/login'
 import Register from './components/register'
 import Dashboard from './components/dashboard'
 import Drawer from './components/dashboard/drawer'
+import Teachers from './components/teacher'
 // import PrivateRoute from './components/router';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
@@ -48,6 +49,7 @@ class App extends Component {
               {/* <PrivateRoute exact roles={'user' || 'admin'} path='/' component={Dashboard} /> */}
               <Drawer>
                 <Route exact path='/dashboard' component={Dashboard} />
+                <Route exact path='/teachers' component={Teachers} />
               </Drawer>
             </Switch>
           </div>

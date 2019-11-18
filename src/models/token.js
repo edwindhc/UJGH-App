@@ -13,7 +13,7 @@ const Token = connection.define('Token', {
     autoIncrement: true
   },
   token: {
-    type: Sequelize.STRING
+    type: Sequelize.TEXT
   },
   email: {
     type: Sequelize.STRING
@@ -27,19 +27,19 @@ const Token = connection.define('Token', {
 }, {
   timestamps: true,
 });
-
-
-// Token.belongsTo(User, { source: 'id' });
-// Token.associate = function (models) {
-//   Token.hasMany(models.Token, { foreingKey: 'UserId', sourceKey: 'id' });
-// }
-
-Token.prototype.get = async (id) => {
+Token.belongsTo(User);
+Token.prototype.get = async (tok) => {
   try {
-    const token = await Token.findByPk(id, {
-      raw: true
-    });
-    if (token) return token;
+    let data = await Token.findOne({
+      where: { token: tok },
+      raw: true,
+      include: [{
+        model: User,
+        attributes: ['id']
+      }]
+    },
+    );
+    if (data) return data;
 
     throw new APIError({
       message: 'Token no existente',
@@ -53,6 +53,7 @@ Token.prototype.get = async (id) => {
 
 Token.prototype.create = async (body) => {
   try {
+    console.log(body, ' bodybodybodybodybodybody')
     const token = await Token.create(body);
     if (token) return token;
   } catch (e) {
@@ -60,13 +61,13 @@ Token.prototype.create = async (body) => {
   }
 }
 
-Token.prototype.generate = async (user) => {
+Token.prototype.generate = async (user, accessToken) => {
   const UserId = user.id;
   const email = user.email;
   const token = `${UserId}.${crypto.randomBytes(40).toString('hex')}`;
   const expires = moment().add(30, 'days').toDate();
   const tokenObject = await Token.create({
-    token, UserId, email, expires,
+    token: accessToken, UserId, email, expires,
   });
   return tokenObject;
 },

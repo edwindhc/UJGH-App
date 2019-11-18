@@ -28,7 +28,7 @@ class NavBar extends Component {
     const scrolled = winScroll / height
 
     this.setState({
-      theposition: scrolled,
+      theposition: scrolled + 100,
     })
   }
 

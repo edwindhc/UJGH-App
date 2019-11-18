@@ -18,7 +18,8 @@ const User = connection.define('User', {
     type: Sequelize.STRING
   },
   role: {
-    type: Sequelize.INTEGER
+    type: Sequelize.INTEGER,
+    defaultValue: 0
   },
   email: {
     type: Sequelize.STRING
@@ -35,6 +36,9 @@ const User = connection.define('User', {
   career: {
     type: Sequelize.STRING
   },
+  tutor: {
+    type: Sequelize.INTEGER
+  },
   phone: {
     type: Sequelize.STRING
   },
@@ -42,31 +46,32 @@ const User = connection.define('User', {
   timestamps: true,
 });
 
-// Token.hasMany(User, { source: 'id' });
-Token.associate = function (models) {
-  // Token.belongsTo(models.Token, { foreingKey: 'UserId', sourceKey: 'id' });
+// User.hasMany(Token);
+
+User.prototype.getToken = async (id) => {
+  try {
+    let data = await Token.findOne({
+      where: { token: id }
+    }, {
+      include: [{
+        model: User,
+        attributes: ['name']
+      }]
+    }
+    );
+
+    console.log(data.dataValues)
+    if (data.dataValues) return data.dataValues;
+
+    throw new APIError({
+      message: 'Token no existente',
+      status: httpStatus.NOT_FOUND,
+    });
+  } catch (e) {
+    throw e;
+  }
 }
-// product.belongsTo(Category, { source: 'id' });
-// product.associate = function (models) {
-//   Category.hasMany(models.Products, { foreingKey: 'CategoryId', sourceKey: 'id' });
 
-// }
-
-// User.prototype.get = async (id) => {
-//   try {
-//     const producto = await User.findByPk(id, {
-//       raw: true
-//     });
-//     if (producto) return producto;
-
-//     throw new APIError({
-//       message: 'Usuario no existente',
-//       status: httpStatus.NOT_FOUND,
-//     });
-//   } catch (e) {
-//     throw e;
-//   }
-// }
 
 User.prototype.findAndGenerateToken = async (options) => {
   try {
@@ -165,8 +170,8 @@ User.prototype.update = async (producto) => {
 
 User.prototype.delete = async (id) => {
   try {
-    const producto = await User.destroy({ where: { id } });
-    if (producto) return producto;
+    const user = await User.destroy({ where: { id } });
+    if (user) return user;
 
     throw new APIError({
       message: 'Usuario no existente',

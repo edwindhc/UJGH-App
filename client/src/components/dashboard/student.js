@@ -4,7 +4,7 @@ import AddIcon from '@material-ui/icons/Add';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { withStyles } from '@material-ui/core/styles';
 import Upload from '../proyect/upload'
-
+import ListProyect from '../proyect/list'
 const styles = theme => ({
     title: {
         fontSize: '1rem',
@@ -23,7 +23,8 @@ class Student extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            openUpload: false
+            openUpload: false,
+            updateProyect: 0
         }
     }
 
@@ -32,6 +33,10 @@ class Student extends Component {
     }
     openUpload() {
         this.setState({ openUpload: true })
+    }
+
+    updateProyect(value) {
+        this.setState({ updateProyect: this.state.updateProyect + value })
     }
 
     render() {
@@ -54,7 +59,7 @@ class Student extends Component {
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails>
                                 <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                                    No tienes proyectos
+                                    <ListProyect updateProyect={this.state.updateProyect} />
                                 </Grid>
                             </ExpansionPanelDetails>
                         </ExpansionPanel>
@@ -79,7 +84,7 @@ class Student extends Component {
                         <AddIcon />
                     </Fab>
                 </Tooltip>
-                <Upload open={this.state.openUpload} onClose={this.closeUpload.bind(this)} />
+                <Upload open={this.state.openUpload} onClose={this.closeUpload.bind(this)} updateProyect={this.updateProyect.bind(this)} />
             </div>
         );
     }

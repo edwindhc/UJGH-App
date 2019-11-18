@@ -1,25 +1,33 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Tokens', {
+    return queryInterface.createTable('Proyects', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      token: {
+      userId: {
+        type: Sequelize.INTEGER
+      },
+      status: {
+        type: Sequelize.ENUM('Pending', 'Done')
+      },
+      filename: {
         type: Sequelize.STRING
       },
-      email: {
+      name: {
         type: Sequelize.STRING
       },
-      UserId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
+      filePath: {
+        type: Sequelize.STRING
       },
-      expires: {
-        type: Sequelize.DATE,
+      tutor: {
+        type: Sequelize.INTEGER
+      },
+      qualification: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -32,6 +40,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Tokens');
+    return queryInterface.dropTable('Proyects');
   }
 };

@@ -15,11 +15,12 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import { ExitToApp, AccountCircle } from '@material-ui/icons';
 import Tooltip from '@material-ui/core/Tooltip';
 import { withStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom'
+import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
+import { Link } from 'react-router-dom'
 
 const drawerWidth = 240;
 
@@ -151,14 +152,32 @@ class MyDrawer extends Component {
                     </div>
                     <Divider />
                     <List>
-                        {['Inicio'].map((text, index) => (
-                            <ListItem button key={text}>
-                                <Tooltip title={text} aria-label={text}>
-                                    <ListItemIcon>{index % 2 === 0 ? <InboxIcon color="primary" /> : <MailIcon color="primary" />}</ListItemIcon>
-                                </Tooltip>
-                                <ListItemText primary={text} />
+
+                        <Link to='/dashboard'>
+                            <ListItem button>
+                                <ListItemIcon>
+                                    <Tooltip title="Inicio" aria-label={`Inicio`}>
+                                        <InboxIcon className="icon" color="primary" />
+                                    </Tooltip>
+                                </ListItemIcon>
+                                <ListItemText primary={'Inicio'} />
                             </ListItem>
-                        ))}
+                        </Link>
+
+
+                        <Link to='/teachers'>
+                            <ListItem button>
+                                <ListItemIcon>
+                                    <Tooltip title="Tutores" aria-label={`Tutores`}>
+                                        <SupervisedUserCircleIcon className="icon" color="primary" />
+                                    </Tooltip>
+                                </ListItemIcon>
+
+                                <ListItemText primary={'Tutores'} />
+
+                            </ListItem>
+                        </Link>
+
                         <ListItem button onClick={() => this.logout()}>
 
                             <ListItemIcon>

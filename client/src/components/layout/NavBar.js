@@ -39,7 +39,7 @@ class NavBar extends Component {
     const headerUpdate = top >= 100 ? true : false;
     return (
       <div>
-        <Navbar style={{ position: 'fixed', width: '100%', backgroundColor: headerUpdate ? 'white' : 'transparent' }} default expand="md">
+        <Navbar style={{ position: 'fixed', width: '100%', backgroundColor: 'white' }} default expand="md">
           <div className="container">
             <NavbarBrand style={{ width: '30%' }} href="/"><img alt="logo" style={{ width: '100%' }} className="logo" src={require('../../assets/logo.png')}></img></NavbarBrand>
             <NavbarToggler onClick={() => this.setIsOpen()} />
@@ -47,6 +47,9 @@ class NavBar extends Component {
               <Nav className="ml-auto" navbar>
                 <NavItem>
                   <Link className={headerUpdate ? 'textMenu2' : 'textMenu1'} to='/login'>Login</Link>
+                  <Link className={headerUpdate ? 'textMenu2' : 'textMenu1'} to='/register'>Registrate</Link>
+                  <Link className={headerUpdate ? 'textMenu2' : 'textMenu1'} to='/contact'>Contactos</Link>
+                  <Link className={headerUpdate ? 'textMenu2' : 'textMenu1'} to='/about'>Acerca</Link>
                 </NavItem>
               </Nav>
             </Collapse>

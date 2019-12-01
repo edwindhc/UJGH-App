@@ -48,6 +48,22 @@ const User = connection.define('User', {
 
 // User.hasMany(Token);
 
+User.prototype.get = async (id) => {
+  try {
+    const user = await User.findByPk(id, {
+      raw: true
+    });
+    if (user) return user;
+
+    throw new APIError({
+      message: 'El usuario no existente',
+      status: httpStatus.NOT_FOUND,
+    });
+  } catch (e) {
+    throw e;
+  }
+}
+
 User.prototype.getToken = async (id) => {
   try {
     let data = await Token.findOne({
@@ -105,10 +121,10 @@ User.prototype.token = async (id) => {
     throw e;
   }
 }
-User.prototype.list = async ({ page = 1, perPage = 30, title, model, sku, CategoryId, fromDate, toDate }) => {
+User.prototype.list = async ({ page = 1, perPage = 30, title, role, tutor, CategoryId, fromDate, toDate }) => {
   try {
     let pagination;
-    let options = omitBy({ model, title, sku, CategoryId, fromDate, toDate }, isNil);
+    let options = omitBy({ role, title, tutor, CategoryId, fromDate, toDate }, isNil);
 
     if (options.title) options = { ...options, ...{ title: { [Sequelize.Op.like]: `%${title}%` } } };
 

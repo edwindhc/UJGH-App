@@ -1,10 +1,12 @@
-const User = require('../models/token');
+const User = require('../models/user');
 const { omit } = require('lodash');
 const { handler } = require('../middlewares/error');
 
 exports.load = async (req, res, next, id) => {
     try {
+        console.log(id, ' este es el user')
         const user = await User.prototype.get(id);
+
         req.locals = { user };
         return next();
     } catch (e) {

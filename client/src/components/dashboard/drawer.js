@@ -29,7 +29,7 @@ const Styles = theme => ({
         display: 'flex',
     },
     appBar: {
-        zIndex: 99999,
+        zIndex: 1,
         transition: theme.transitions.create(['width', 'margin'], {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
@@ -132,6 +132,7 @@ class MyDrawer extends Component {
                     </Toolbar>
                 </AppBar>
                 <Drawer
+                    style={{ zIndex: 0 }}
                     variant="permanent"
                     className={clsx(classes.drawer, {
                         [classes.drawerOpen]: open,

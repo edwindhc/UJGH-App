@@ -109,6 +109,7 @@ class ListTable extends Component {
         link.click();
         this.setState({ alert: { open, status, message } })
     }
+
     render() {
         const { classes } = this.props
         const { page, rowsPerPage, rows, numeration, alert } = this.state
@@ -191,77 +192,3 @@ class ListTable extends Component {
 }
 
 export default withStyles(useStyles2, { withTheme: true })(ListTable);
-
-// export default function CustomPaginationActionsTable() {
-//     const classes = useStyles2();
-//     const [page, setPage] = React.useState(0);
-//     const [rowsPerPage, setRowsPerPage] = React.useState(5);
-
-//     const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
-
-//     const handleChangePage = (event, newPage) => {
-//         console.log(newPage, 'newPage')
-//         setPage(newPage);
-//     };
-
-//     const handleChangeRowsPerPage = event => {
-//         setRowsPerPage(parseInt(event.target.value, 10));
-//         setPage(0);
-//     };
-
-//     return (
-//         <Paper className={classes.root}>
-//             <div className={classes.tableWrapper}>
-//                 <Table className={classes.table} aria-label="custom pagination table">
-//                     <TableHead>
-//                         <TableRow>
-//                             <TableCell align="left">Calories</TableCell>
-//                             <TableCell align="left">Fat&nbsp;(g)</TableCell>
-//                             <TableCell align="left">Carbs&nbsp;(g)</TableCell>
-//                         </TableRow>
-//                     </TableHead>
-//                     <TableBody>
-//                         {(rowsPerPage > 0
-//                             ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-//                             : rows
-//                         ).map(row => (
-//                             <TableRow key={row.name}>
-//                                 <TableCell component="th" scope="row">
-//                                     {row.name}
-//                                 </TableCell>
-//                                 <TableCell align="left">{row.calories}</TableCell>
-//                                 <TableCell align="left">{row.fat}</TableCell>
-//                             </TableRow>
-//                         ))}
-
-//                         {emptyRows > 0 && (
-//                             <TableRow style={{ height: 53 * emptyRows }}>
-//                                 <TableCell colSpan={6} />
-//                             </TableRow>
-//                         )}
-//                     </TableBody>
-//                     <TableFooter>
-//                         <TableRow>
-//                             <TablePagination
-//                                 labelDisplayedRows={({ from, to, count }) => `${from}-${to === -1 ? count : to} de ${count}`}
-//                                 labelRowsPerPage="Proyectos por pagina"
-//                                 rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
-//                                 colSpan={3}
-//                                 count={rows.length}
-//                                 rowsPerPage={rowsPerPage}
-//                                 page={page}
-//                                 SelectProps={{
-//                                     inputProps: { 'aria-label': 'Proyectos por pagina' },
-//                                     native: false,
-//                                 }}
-//                                 onChangePage={handleChangePage}
-//                                 onChangeRowsPerPage={handleChangeRowsPerPage}
-//                                 ActionsComponent={TablePaginationActions}
-//                             />
-//                         </TableRow>
-//                     </TableFooter>
-//                 </Table>
-//             </div>
-//         </Paper>
-//     );
-// }
